@@ -1,0 +1,30 @@
+{
+  "name": "mytory/wp-main-slider",
+  "description": "워드프레스 메인 화면에 사용할 용도로 슬라이더 관리자/클라이언트 인터페이스를 만들어 준다.",
+  "keywords": [
+    "wordpress",
+    "slider"
+  ],
+  "authors": [
+    {
+      "name": "An, Hyeong-woo",
+      "email": "mytory@gmail.com"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/mytory/wp-mytory-ajax-variable.git"
+    }
+  ],
+  "type": "library",
+  "require": {
+    "php": ">=7.0",
+    "mytory/wp-mytory-ajax-variable": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mytory\\MainSlider": "src/"
+    }
+  }
+}

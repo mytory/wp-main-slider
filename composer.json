@@ -24,7 +24,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Mytory\\MainSlider": "src/"
+      "Mytory\\MainSlider\\": "src/"
     }
   }
 }

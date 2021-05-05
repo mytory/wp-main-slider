@@ -1,14 +1,14 @@
 var $ = jQuery;
-$('.js-mytory-slider-buttons button').click(function () {
-    $('.js-mytory-slider-buttons button').removeClass('mytory-slider-button--active');
-    $(this).addClass('mytory-slider-button--active');
+$('.js-wp-main-slider-buttons button').click(function () {
+    $('.js-wp-main-slider-buttons button').removeClass('wp-main-slider-button--active');
+    $(this).addClass('wp-main-slider-button--active');
 
-    var index = $(this).index('.js-mytory-slider-buttons button') + 1;
+    var index = $(this).index('.js-wp-main-slider-buttons button') + 1;
     swiperMain.slideTo(index);
 });
 
 swiperMain.on('slideChangeStart', function () {
-    var activeButton = $('.js-mytory-slider-buttons button')[swiperMain.activeIndex - 1];
-    $('.js-mytory-slider-buttons button').removeClass('mytory-slider-button--active');
-    $(activeButton).addClass('mytory-slider-button--active');
+    var activeButton = $('.js-wp-main-slider-buttons button')[swiperMain.activeIndex - 1];
+    $('.js-wp-main-slider-buttons button').removeClass('wp-main-slider-button--active');
+    $(activeButton).addClass('wp-main-slider-button--active');
 });

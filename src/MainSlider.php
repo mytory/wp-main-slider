@@ -24,25 +24,25 @@ class MainSlider {
 
 	function registerPostType() {
 		$labels = array(
-			'name'               => _x( 'Sliders', 'post type general name', 'mytory-slider' ),
-			'singular_name'      => _x( 'Slider', 'post type singular name', 'mytory-slider' ),
-			'menu_name'          => _x( 'Mytory Slider', 'admin menu', 'mytory-slider' ),
-			'name_admin_bar'     => _x( 'Slider', 'add new on admin bar', 'mytory-slider' ),
-			'add_new'            => _x( 'Add New', 'mytory-slider', 'mytory-slider' ),
-			'add_new_item'       => __( 'Add New Slider', 'mytory-slider' ),
-			'new_item'           => __( 'New Slider', 'mytory-slider' ),
-			'edit_item'          => __( 'Edit Slider', 'mytory-slider' ),
-			'view_item'          => __( 'View Slider', 'mytory-slider' ),
-			'all_items'          => __( 'All Sliders', 'mytory-slider' ),
-			'search_items'       => __( 'Search Sliders', 'mytory-slider' ),
-			'parent_item_colon'  => __( 'Parent Sliders:', 'mytory-slider' ),
-			'not_found'          => __( 'No Sliders found.', 'mytory-slider' ),
-			'not_found_in_trash' => __( 'No Sliders found in Trash.', 'mytory-slider' )
+			'name'               => _x( 'Sliders', 'post type general name', 'wp-main-slider' ),
+			'singular_name'      => _x( 'Slider', 'post type singular name', 'wp-main-slider' ),
+			'menu_name'          => _x( 'Mytory Slider', 'admin menu', 'wp-main-slider' ),
+			'name_admin_bar'     => _x( 'Slider', 'add new on admin bar', 'wp-main-slider' ),
+			'add_new'            => _x( 'Add New', 'wp-main-slider', 'wp-main-slider' ),
+			'add_new_item'       => __( 'Add New Slider', 'wp-main-slider' ),
+			'new_item'           => __( 'New Slider', 'wp-main-slider' ),
+			'edit_item'          => __( 'Edit Slider', 'wp-main-slider' ),
+			'view_item'          => __( 'View Slider', 'wp-main-slider' ),
+			'all_items'          => __( 'All Sliders', 'wp-main-slider' ),
+			'search_items'       => __( 'Search Sliders', 'wp-main-slider' ),
+			'parent_item_colon'  => __( 'Parent Sliders:', 'wp-main-slider' ),
+			'not_found'          => __( 'No Sliders found.', 'wp-main-slider' ),
+			'not_found_in_trash' => __( 'No Sliders found in Trash.', 'wp-main-slider' )
 		);
 
 		$args = array(
 			'labels'              => $labels,
-			'description'         => __( 'Mytory Slider', 'mytory-slider' ),
+			'description'         => __( 'Mytory Slider', 'wp-main-slider' ),
 			'public'              => true,
 			'exclude_from_search' => true,
 			'publicly_queryable'  => false,
@@ -54,42 +54,41 @@ class MainSlider {
 
 	function adminEnqueueScripts() {
 		wp_enqueue_media();
-		$src = get_theme_file_uri( str_replace( get_template_directory(), '', realpath(__DIR__ . '/../js/media.js') ) );
-		wp_enqueue_script( 'mytory-slider-media', $src, array( 'jquery' ), $this->version, true );
+		$src = get_theme_file_uri( str_replace( get_template_directory(), '',
+			realpath( __DIR__ . '/../dist/media.js' ) ) );
+		wp_enqueue_script( 'wp-main-slider-media', $src, array( 'jquery' ), $this->version, true );
 	}
 
 	function enqueueScripts() {
 		global $post;
 		if ( has_shortcode( $post->post_content, 'mytory_slider' ) ) {
-			$src = get_theme_file_uri( str_replace( get_template_directory(), '', realpath(__DIR__ . '/../js/swiper.js') ) );
-			wp_enqueue_script( 'swiper-slider', $src, filemtime(realpath(__DIR__ . '/../js/swiper.js')), true );
+			$src = get_theme_file_uri( str_replace( get_template_directory(), '',
+				realpath( __DIR__ . '/../dist/swiper.js' ) ) );
+			wp_enqueue_script( 'swiper-slider', $src, filemtime( realpath( __DIR__ . '/../js/swiper.js' ) ), true );
 		}
 	}
 
 	function addMetaBox() {
 		add_meta_box(
-			'mytory-slider-images',
-			__( 'Images', 'mytory-slider' ),
-			array( $this, 'printImagesMetaBox' ),
+			'wp-main-slider-images',
+			__( 'Images', 'wp-main-slider' ),
+			function () {
+				include 'metabox/images.php';
+			},
 			'mytory_slider'
 		);
 
 		add_meta_box(
-			'mytory-slider-configuration',
-			__( 'Configuration', 'mytory-slider' ),
-			array( $this, 'printConfigurationMetaBox' ),
+			'wp-main-slider-configuration',
+			__( 'Configuration', 'wp-main-slider' ),
+			function () {
+				include 'include/checked-helper.php';
+				include 'metabox/configuration.php';
+			},
 			'mytory_slider'
 		);
 	}
 
-	function printImagesMetaBox() {
-		include 'metabox/images.php';
-	}
-
-	function printConfigurationMetaBox() {
-		include 'include/checked-helper.php';
-		include 'metabox/configuration.php';
-	}
 
 	function save( $post_id, $post, $is_update ) {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {

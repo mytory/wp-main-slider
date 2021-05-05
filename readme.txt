@@ -13,7 +13,7 @@ Swiper Slider를 이용해서 만든 작고 가벼운 슬라이더입니다.
 
 == Installation ==
 
-1. Upload files to the `/wp-content/plugins/mytory-slider/` directory
+1. Upload files to the `/wp-content/plugins/wp-main-slider/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==

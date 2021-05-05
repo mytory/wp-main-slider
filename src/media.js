@@ -8,7 +8,7 @@ jQuery(function ($) {
             var attachment = wp.media.attachment(id);
             attachment.fetch().done(function () {
                 fetchCompleteCount++;
-                if (fetchCompleteCount == list.length) {
+                if (fetchCompleteCount === list.length) {
                     $('.js-open-media').attr('disabled', false);
                     toggleButton();
                     setPreview();
@@ -32,7 +32,7 @@ jQuery(function ($) {
         var models = [],
             options = {
                 frame: 'post',
-                state: 'gallery-library'
+                state: 'gallery-library',
             },
             _mytory_slider_image_ids = $.trim($('#_mytory_slider_image_ids').val());
 
@@ -48,7 +48,6 @@ jQuery(function ($) {
     }
 
     function addEventHandler() {
-
         mediaFrame.on('open', function () {
             if ($.trim($('#_mytory_slider_image_ids').val())) {
                 mediaFrame.setState('gallery-edit');
@@ -56,6 +55,14 @@ jQuery(function ($) {
             // post_excerpt 를 링크 거는 데 사용. 꼼수.
             $('.describe').attr('placeholder', 'Link');
         });
+
+        setTimeout(function () {
+            document.querySelector('.media-button-insert').addEventListener('click', function () {
+                setTimeout(function () {
+                    $('.describe').attr('placeholder', 'Link');
+                }, 100);
+            });
+        }, 100);
 
         // 이미지 선택시 실행할 동작
         mediaFrame.on('update', setImageIds);

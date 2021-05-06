@@ -6,12 +6,17 @@ namespace Mytory\MainSlider;
  * Class MainSlider
  */
 class MainSlider {
-	public $version = '0.1.0';
+	public $version = '1.0';
+	public $postTypeKey = 'mytory_slider';
+	public $postTypeLabel = 'Mytory 슬라이더';
 
-	public function __construct() {
+	public function __construct( $args = [] ) {
+		$this->postTypeKey   = $args['postTypeKey'] ?? $this->postTypeKey;
+		$this->postTypeLabel = $args['postTypeLabel'] ?? $this->postTypeLabel;
+
 		add_action( 'init', array( $this, 'registerPostType' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueueScripts' ) );
-		add_shortcode( 'mytory_slider', array( $this, 'shortcode' ) );
+		add_shortcode( $this->postTypeKey, array( $this, 'shortcode' ) );
 		add_action( 'save_post', array( $this, 'save' ), 10, 3 );
 
 		if ( is_admin() ) {
@@ -25,7 +30,7 @@ class MainSlider {
 		$labels = array(
 			'name'               => _x( 'Sliders', 'post type general name', 'wp-main-slider' ),
 			'singular_name'      => _x( 'Slider', 'post type singular name', 'wp-main-slider' ),
-			'menu_name'          => _x( 'Mytory Slider', 'admin menu', 'wp-main-slider' ),
+			'menu_name'          => _x( $this->postTypeLabel, 'admin menu', 'wp-main-slider' ),
 			'name_admin_bar'     => _x( 'Slider', 'add new on admin bar', 'wp-main-slider' ),
 			'add_new'            => _x( 'Add New', 'wp-main-slider', 'wp-main-slider' ),
 			'add_new_item'       => __( 'Add New Slider', 'wp-main-slider' ),
@@ -41,14 +46,14 @@ class MainSlider {
 
 		$args = array(
 			'labels'              => $labels,
-			'description'         => __( 'Mytory Slider', 'wp-main-slider' ),
+			'description'         => __( $this->postTypeLabel, 'wp-main-slider' ),
 			'public'              => true,
 			'exclude_from_search' => true,
 			'publicly_queryable'  => false,
 			'capability_type'     => 'post',
 			'supports'            => array( 'title' )
 		);
-		register_post_type( 'mytory_slider', $args );
+		register_post_type( $this->postTypeKey, $args );
 	}
 
 	function adminEnqueueScripts() {
@@ -72,7 +77,7 @@ class MainSlider {
 			function () {
 				include 'metabox/images.php';
 			},
-			'mytory_slider'
+			$this->postTypeKey
 		);
 
 		add_meta_box(
@@ -82,7 +87,7 @@ class MainSlider {
 				include 'include/checked-helper.php';
 				include 'metabox/configuration.php';
 			},
-			'mytory_slider'
+			$this->postTypeKey
 		);
 	}
 
@@ -92,13 +97,13 @@ class MainSlider {
 			return;
 		}
 
-		if ( $post->post_type == 'mytory_slider' ) {
-			if ( isset( $_POST['_mytory_slider_image_ids'] ) ) {
-				update_post_meta( $post_id, '_mytory_slider_image_ids',
-					sanitize_text_field( $_POST['_mytory_slider_image_ids'] ) );
+		if ( $post->post_type == $this->postTypeKey ) {
+			if ( isset( $_POST["_{$this->postTypeKey}_image_ids"] ) ) {
+				update_post_meta( $post_id, "_{$this->postTypeKey}_image_ids",
+					sanitize_text_field( $_POST["_{$this->postTypeKey}_image_ids"] ) );
 			}
-			if ( ! empty( $_POST['mytory_slider'] ) ) {
-				foreach ( $_POST['mytory_slider'] as $k => $v ) {
+			if ( ! empty( $_POST[$this->postTypeKey] ) ) {
+				foreach ( $_POST[$this->postTypeKey] as $k => $v ) {
 					update_post_meta( $post_id, $k, $v );
 				}
 			}
@@ -110,7 +115,7 @@ class MainSlider {
 			'id' => '',
 		), $attributes );
 
-		$image_ids = get_post_meta( $attributes['id'], '_mytory_slider_image_ids', true );
+		$image_ids = get_post_meta( $attributes['id'], "_{$this->postTypeKey}_image_ids", true );
 		ob_start();
 		include 'templates/basic-slider.php';
 		$html = ob_get_contents();
@@ -120,7 +125,7 @@ class MainSlider {
 	}
 
 	function removeYoastMetabox() {
-		remove_meta_box( 'wpseo_meta', 'mytory_slider', 'normal' );
+		remove_meta_box( 'wpseo_meta', $this->postTypeKey, 'normal' );
 	}
 
 	function removeYoastCustomColumns( $columns ) {
@@ -150,8 +155,8 @@ class MainSlider {
 	 */
 	function removeUselessYoast() {
 		$current_screen = get_current_screen();
-		if ( $current_screen->post_type == 'mytory_slider' ) {
-			add_filter( 'manage_mytory_slider_posts_columns', array( $this, 'removeYoastCustomColumns' ), 100 );
+		if ( $current_screen->post_type == $this->postTypeKey ) {
+			add_filter( "manage_{$this->postTypeKey}_posts_columns", array( $this, 'removeYoastCustomColumns' ), 100 );
 			add_action( 'restrict_manage_posts', array( $this, 'removeYoastAction' ), 1 );
 			add_action( 'add_meta_boxes', array( $this, 'removeYoastMetabox' ), 100 );
 		}

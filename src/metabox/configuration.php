@@ -20,7 +20,7 @@ if (!$options['pagination']) {
             <?php _e('Shortcode', 'wp-main-slider') ?>
         </th>
         <td>
-            <input type="text" class="regular-text  js-shortcode" readonly value="[mytory_slider id=<?php echo $post->ID ?>]" title="shortcode">
+            <input type="text" class="regular-text  js-shortcode" readonly value="[<?php echo $this->postTypeKey; ?> id=<?php echo $post->ID ?>]" title="shortcode">
         </td>
     </tr>
     <?php } ?>
@@ -30,7 +30,7 @@ if (!$options['pagination']) {
         </th>
         <td>
             <input type="text" class="regular-text" title="autoplay milli seconds"
-                   name="mytory_slider[_autoplay]"
+                   name="<?php echo $this->postTypeKey; ?>[_autoplay]"
                    value="<?php echo $options['autoplay'] ?>">
             <p class="help"><?php _e('Set 0 to disable autoplay.', 'wp-main-slider') ?></p>
         </td>
@@ -42,42 +42,42 @@ if (!$options['pagination']) {
         <td>
             <p>
                 <label>
-                    <input type="radio" name="mytory_slider[_pagination]" value="bullets"
+                    <input type="radio" name="<?php echo $this->postTypeKey; ?>[_pagination]" value="bullets"
                         <?php attr_checked('bullets', $options['pagination']) ?>>
                     <?php _e('bullets', 'wp-main-slider') ?>
                 </label>
             </p>
             <p>
                 <label>
-                    <input type="radio" name="mytory_slider[_pagination]" value="fraction"
+                    <input type="radio" name="<?php echo $this->postTypeKey; ?>[_pagination]" value="fraction"
                         <?php attr_checked('fraction', $options['pagination']) ?>>
                     <?php _e('fraction', 'wp-main-slider') ?>
                 </label>
             </p>
             <p>
                 <label>
-                    <input type="radio" name="mytory_slider[_pagination]" value="progressbar"
+                    <input type="radio" name="<?php echo $this->postTypeKey; ?>[_pagination]" value="progressbar"
                         <?php attr_checked('progressbar', $options['pagination']) ?>>
                     <?php _e('progressbar', 'wp-main-slider') ?>
                 </label>
             </p>
             <p>
                 <label>
-                    <input type="radio" name="mytory_slider[_pagination]" value="none"
+                    <input type="radio" name="<?php echo $this->postTypeKey; ?>[_pagination]" value="none"
                         <?php attr_checked('none', $options['pagination']) ?>>
                     <?php _e('None', 'wp-main-slider') ?>
                 </label>
             </p>
             <p>
                 <label>
-                    <input type="radio" name="mytory_slider[_pagination]" value="thumbnail"
+                    <input type="radio" name="<?php echo $this->postTypeKey; ?>[_pagination]" value="thumbnail"
                         <?php attr_checked('thumbnail', $options['pagination']) ?>>
                     <?php _e('Thumbnail', 'wp-main-slider') ?>
                 </label>
             </p>
             <p>
                 <label>
-                    <input type="radio" name="mytory_slider[_pagination]" value="text"
+                    <input type="radio" name="<?php echo $this->postTypeKey; ?>[_pagination]" value="text"
                         <?php attr_checked('text', $options['pagination']) ?>>
                     <?php _e('Text', 'wp-main-slider') ?>
                 </label>

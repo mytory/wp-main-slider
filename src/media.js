@@ -1,10 +1,10 @@
 jQuery(function ($) {
     var mediaFrame,
-        _mytory_slider_image_ids = $.trim($('#_mytory_slider_image_ids').val()),
+        image_ids = $.trim($('#image_ids').val()),
         fetchCompleteCount = 0;
 
-    if (_mytory_slider_image_ids) {
-        _.each(_mytory_slider_image_ids.split(','), function (id, index, list) {
+    if (image_ids) {
+        _.each(image_ids.split(','), function (id, index, list) {
             var attachment = wp.media.attachment(id);
             attachment.fetch().done(function () {
                 fetchCompleteCount++;
@@ -42,10 +42,10 @@ jQuery(function ($) {
                 frame: 'post',
                 state: 'gallery-library',
             },
-            _mytory_slider_image_ids = $.trim($('#_mytory_slider_image_ids').val());
+            image_ids = $.trim($('#image_ids').val());
 
-        if (_mytory_slider_image_ids) {
-            _.each(_mytory_slider_image_ids.split(','), function (id) {
+        if (image_ids) {
+            _.each(image_ids.split(','), function (id) {
                 var attachment = wp.media.attachment(id);
                 models.push(attachment);
             });
@@ -57,7 +57,7 @@ jQuery(function ($) {
 
     function addEventHandler() {
         mediaFrame.on('open', function () {
-            if ($.trim($('#_mytory_slider_image_ids').val())) {
+            if ($.trim($('#image_ids').val())) {
                 mediaFrame.setState('gallery-edit');
             }
             // post_excerpt 를 링크 거는 데 사용. 꼼수.
@@ -70,7 +70,7 @@ jQuery(function ($) {
 
     function setPreview() {
         $('.js-preview').html('');
-        _.each($('#_mytory_slider_image_ids').val().split(','), function (id) {
+        _.each($('#image_ids').val().split(','), function (id) {
             var attachment = wp.media.attachment(id),
                 url;
             if (attachment.attributes.sizes.hasOwnProperty('thumbnail')) {
@@ -90,7 +90,7 @@ jQuery(function ($) {
     function toggleButton() {
         $('.js-ing').remove();
         $('.js-open-media').addClass('hidden');
-        if ($.trim($('#_mytory_slider_image_ids').val())) {
+        if ($.trim($('#image_ids').val())) {
             $('.js-update-photo').removeClass('hidden');
         } else {
             $('.js-select-photo').removeClass('hidden');
@@ -99,7 +99,7 @@ jQuery(function ($) {
 
     function setImageIds(library) {
         var ids = _.pluck(library.toJSON(), 'id').join(',');
-        $('#_mytory_slider_image_ids').val(ids);
+        $('#image_ids').val(ids);
         toggleButton();
         setPreview();
     }

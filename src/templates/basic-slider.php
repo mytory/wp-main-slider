@@ -35,7 +35,7 @@ if ( $pagination == 'none' ) {
 
 $image_id_array = explode( ',', $image_ids );
 ?>
-<div class="swiper-container  js-main-slider">
+<div class="swiper-container  js-<?php echo $this->postTypeKey ?>">
     <div class="swiper-wrapper">
 		<?php foreach ( $image_id_array as $image_id ) {
 			$image_post = get_post( $image_id );
@@ -78,7 +78,7 @@ $image_id_array = explode( ',', $image_ids );
 
 <script>
     jQuery(document).ready(function ($) {
-        window.swiperMain = new Swiper('.js-main-slider', <?php echo json_encode( $swiper_option ) ?>);
+        window.swiperMain = new Swiper('.js-<?php echo $this->postTypeKey ?>', <?php echo json_encode( $swiper_option ) ?>);
 		<?php
 		if ( $pagination == 'thumbnail' ) {
 			require 'thumbnail.js'; // 뚝딱...

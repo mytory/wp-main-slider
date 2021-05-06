@@ -10,6 +10,11 @@ class MainSlider {
 	public $postTypeKey = 'mytory_slider';
 	public $postTypeLabel = 'Mytory 슬라이더';
 
+	/**
+	 * @var bool 테마에서 이미 스와이퍼를 사용하고 있다면 굳이 여기서 임포트하지 않는다.
+	 */
+	public $importSwiperJs = true;
+
 	public function __construct( $args = [] ) {
 		$this->postTypeKey   = $args['postTypeKey'] ?? $this->postTypeKey;
 		$this->postTypeLabel = $args['postTypeLabel'] ?? $this->postTypeLabel;
@@ -64,10 +69,11 @@ class MainSlider {
 	}
 
 	function enqueueScripts() {
-		global $post;
-		$src = get_theme_file_uri( str_replace( get_template_directory(), '',
-			realpath( __DIR__ . '/../dist/swiper.js' ) ) );
-		wp_enqueue_script( 'swiper-slider', $src, filemtime( realpath( __DIR__ . '/../dist/swiper.js' ) ), true );
+		if ($this->importSwiperJs) {
+			$src = get_theme_file_uri( str_replace( get_template_directory(), '',
+				realpath( __DIR__ . '/../dist/swiper.js' ) ) );
+			wp_enqueue_script( 'swiper-slider', $src, filemtime( realpath( __DIR__ . '/../dist/swiper.js' ) ), true );
+		}
 	}
 
 	function addMetaBox() {

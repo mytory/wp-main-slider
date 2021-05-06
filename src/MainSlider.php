@@ -17,7 +17,6 @@ class MainSlider {
 		if ( is_admin() ) {
 			add_action( 'add_meta_boxes', array( $this, 'addMetaBox' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'adminEnqueueScripts' ) );
-
 			add_action( 'current_screen', array( $this, 'removeUselessYoast' ) );
 		}
 	}
@@ -61,11 +60,9 @@ class MainSlider {
 
 	function enqueueScripts() {
 		global $post;
-		if ( has_shortcode( $post->post_content, 'mytory_slider' ) ) {
-			$src = get_theme_file_uri( str_replace( get_template_directory(), '',
-				realpath( __DIR__ . '/../dist/swiper.js' ) ) );
-			wp_enqueue_script( 'swiper-slider', $src, filemtime( realpath( __DIR__ . '/../js/swiper.js' ) ), true );
-		}
+		$src = get_theme_file_uri( str_replace( get_template_directory(), '',
+			realpath( __DIR__ . '/../dist/swiper.js' ) ) );
+		wp_enqueue_script( 'swiper-slider', $src, filemtime( realpath( __DIR__ . '/../dist/swiper.js' ) ), true );
 	}
 
 	function addMetaBox() {

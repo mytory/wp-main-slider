@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var array $image_id_array
+ */
+?>
 <style>
     .wp-main-slider-buttons {
         text-align: center;

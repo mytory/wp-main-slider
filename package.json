@@ -17,7 +17,8 @@
     "url": "https://github.com/mytory/wp-main-slider/issues"
   },
   "homepage": "https://github.com/mytory/wp-main-slider#readme",
-  "dependencies": {
-    "swiper": "^6.5.6"
+  "dependencies": {},
+  "devDependencies": {
+    "swiper": "^6.5.9"
   }
 }

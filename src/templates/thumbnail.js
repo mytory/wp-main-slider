@@ -1,16 +1,5 @@
-var spaceBetween = 10;
-var swiperThumbnail = new Swiper('.swiper-thumbnail', {
-    spaceBetween: spaceBetween,
-    centeredSlides: true,
-    slidesPerView: 'auto',
-    touchRatio: 0.2,
-    slideToClickedSlide: true
-});
-swiperMain.params.control = swiperThumbnail;
-swiperThumbnail.params.control = swiperMain;
-
 var $ = jQuery;
-var $mainSlide = $('.swiper-main .swiper-slide').first();
+var $mainSlide = $('.js-main-slider .swiper-slide').first();
 var mainWidth = $mainSlide.width();
 var mainHeight = $mainSlide.height();
 
@@ -44,10 +33,22 @@ if (thumbnailContainerWidth > 1200) {
     thumbnailWidthPercent = 33.333;
 }
 
-$('.swiper-thumbnail .swiper-slide').each(function (i, el) {
-    delete el.style.width;
-    el.style.setProperty('width', thumbnailWidthPercent + '%', 'important');
+// $('.swiper-thumbnail .swiper-slide').each(function (i, el) {
+//     delete el.style.width;
+//     el.style.setProperty('width', thumbnailWidthPercent + '%', 'important');
+// });
+// var thumbnailWidth = $('.swiper-thumbnail .swiper-slide').width();
+// var thumbnailHeight = mainHeight * thumbnailWidth / mainWidth;
+// $('.swiper-thumbnail').css('height', thumbnailHeight + spaceBetween * 2);
+
+
+var spaceBetween = 10;
+var swiperThumbnail = new Swiper('.swiper-thumbnail', {
+    spaceBetween: spaceBetween,
+    slidesPerView: swiperMain.slides.length,
+    freeMode: true,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
 });
-var thumbnailWidth = $('.swiper-thumbnail .swiper-slide').width();
-var thumbnailHeight = mainHeight * thumbnailWidth / mainWidth;
-$('.swiper-thumbnail').css('height', thumbnailHeight + spaceBetween * 2);
+swiperMain.params.thumbs.swiper = swiperThumbnail;
+swiperMain.thumbs.init();

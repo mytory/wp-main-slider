@@ -26,6 +26,14 @@ jQuery(function ($) {
             addEventHandler();
         }
         mediaFrame.open();
+
+        setTimeout(function () {
+            document.querySelector('.media-button-insert').addEventListener('click', function () {
+                setTimeout(function () {
+                    $('.describe').attr('placeholder', 'Link');
+                }, 100);
+            });
+        }, 100);
     });
 
     function getOptions() {
@@ -55,14 +63,6 @@ jQuery(function ($) {
             // post_excerpt 를 링크 거는 데 사용. 꼼수.
             $('.describe').attr('placeholder', 'Link');
         });
-
-        setTimeout(function () {
-            document.querySelector('.media-button-insert').addEventListener('click', function () {
-                setTimeout(function () {
-                    $('.describe').attr('placeholder', 'Link');
-                }, 100);
-            });
-        }, 100);
 
         // 이미지 선택시 실행할 동작
         mediaFrame.on('update', setImageIds);

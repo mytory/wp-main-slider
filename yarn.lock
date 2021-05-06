@@ -14,10 +14,10 @@ ssr-window@^3.0.0, ssr-window@^3.0.0-alpha.1:
   resolved "https://registry.yarnpkg.com/ssr-window/-/ssr-window-3.0.0.tgz#fd5b82801638943e0cc704c4691801435af7ac37"
   integrity sha512-q+8UfWDg9Itrg0yWK7oe5p/XRCJpJF9OBtXfOPgSJl+u3Xd5KI328RUEvUqSMVM9CiQUEf1QdBzJMkYGErj9QA==
 
-swiper@^6.5.6:
-  version "6.5.6"
-  resolved "https://registry.yarnpkg.com/swiper/-/swiper-6.5.6.tgz#4d1dc5cd124696dd765818f2484a1ec8e0d3d3bc"
-  integrity sha512-oKVshbF0vhdMFJXtcNH8vLpmyCHc7VvvIlOUafyazzlYzCRJmI80FxoIBWKzSqDyy8EXRn7Iy78p9o4I1Bww/Q==
+swiper@^6.5.9:
+  version "6.5.9"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-6.5.9.tgz#ed6caa8bd9fd44d314944210551ce297d4fb09c7"
+  integrity sha512-zO3UCLVEiOXZontAQWBNpWFZGV3WaXwHSgvng0qIGLVMyxYGD6w78S7YkGAu/XBam1SBQNZzxqfFc/LDjNdq/A==
   dependencies:
     dom7 "^3.0.0"
     ssr-window "^3.0.0"

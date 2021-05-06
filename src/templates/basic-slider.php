@@ -16,7 +16,9 @@ $swiper_option = array(
 
 $autoplay = get_post_meta( $attributes['id'], '_autoplay', true );
 if ( $autoplay > 0 ) {
-	$swiper_option['autoplay'] = $autoplay;
+	$swiper_option['autoplay'] = [
+		'deplay' => $autoplay
+	];
 }
 
 if ( $pagination == 'none' ) {

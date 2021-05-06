@@ -1,0 +1,114 @@
+# Translation of WordPress - 5.7.x - Development in Korean
+# This file is distributed under the same license as the WordPress - 5.7.x - Development package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WordPress - 5.7.x - Development\n"
+"POT-Creation-Date: 2021-05-07 01:12+0900\n"
+"PO-Revision-Date: 2021-05-07 01:13+0900\n"
+"Last-Translator: 안형우 <mytory@gmail.com>\n"
+"Language-Team: \n"
+"Language: ko_KR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: __;_x;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: MainSlider.php:37
+msgid "Sliders"
+msgstr "슬라이더 목록"
+
+#: MainSlider.php:38 MainSlider.php:40
+msgid "Slider"
+msgstr "슬라이더"
+
+#: MainSlider.php:41
+msgid "Add New"
+msgstr "새 슬라이더"
+
+#: MainSlider.php:42
+msgid "Add New Slider"
+msgstr "새 슬라이더"
+
+#: MainSlider.php:43
+msgid "New Slider"
+msgstr "새 슬라이더"
+
+#: MainSlider.php:44
+msgid "Edit Slider"
+msgstr "슬라이더 편집"
+
+#: MainSlider.php:45
+msgid "View Slider"
+msgstr "슬라이더 보기"
+
+#: MainSlider.php:46
+msgid "All Sliders"
+msgstr "전체 슬라이더"
+
+#: MainSlider.php:47
+msgid "Search Sliders"
+msgstr "슬라이더 검색"
+
+#: MainSlider.php:48
+msgid "Parent Sliders:"
+msgstr "부모 슬라이더:"
+
+#: MainSlider.php:49
+msgid "No Sliders found."
+msgstr "슬라이더가 없습니다."
+
+#: MainSlider.php:50
+msgid "No Sliders found in Trash."
+msgstr "휴지통이 비었습니다."
+
+#: MainSlider.php:83
+msgid "Images"
+msgstr "이미지"
+
+#: MainSlider.php:92
+msgid "Configuration"
+msgstr "설정"
+
+#: metabox/configuration.php:20
+msgid "Shortcode"
+msgstr "숏코드"
+
+#: metabox/configuration.php:29
+msgid "Auto play(milli seconds)"
+msgstr "자동 재생(밀리초)"
+
+#: metabox/configuration.php:35
+msgid "Set 0 to disable autoplay."
+msgstr "0으로 설정하면 자동재생을 하지 않습니다."
+
+#: metabox/configuration.php:40
+msgid "Pagination"
+msgstr "페이지네이션"
+
+#: metabox/configuration.php:47
+msgid "bullets"
+msgstr "동그라미"
+
+#: metabox/configuration.php:54
+msgid "fraction"
+msgstr "숫자"
+
+#: metabox/configuration.php:61
+msgid "progressbar"
+msgstr "진행바"
+
+#: metabox/configuration.php:68
+msgid "None"
+msgstr "없음"
+
+#: metabox/configuration.php:75
+msgid "Thumbnail"
+msgstr "썸네일"
+
+#: metabox/configuration.php:82
+msgid "Text"
+msgstr "텍스트"

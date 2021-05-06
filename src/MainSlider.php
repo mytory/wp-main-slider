@@ -23,6 +23,7 @@ class MainSlider {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueueScripts' ) );
 		add_shortcode( $this->postTypeKey, array( $this, 'shortcode' ) );
 		add_action( 'save_post', array( $this, 'save' ), 10, 3 );
+		add_action( 'after_setup_theme', [ $this, 'textDomain' ] );
 
 		if ( is_admin() ) {
 			add_action( 'add_meta_boxes', array( $this, 'addMetaBox' ) );
@@ -69,7 +70,7 @@ class MainSlider {
 	}
 
 	function enqueueScripts() {
-		if ($this->importSwiperJs) {
+		if ( $this->importSwiperJs ) {
 			$src = get_theme_file_uri( str_replace( get_template_directory(), '',
 				realpath( __DIR__ . '/../dist/swiper.js' ) ) );
 			wp_enqueue_script( 'swiper-slider', $src, filemtime( realpath( __DIR__ . '/../dist/swiper.js' ) ), true );
@@ -108,8 +109,8 @@ class MainSlider {
 				update_post_meta( $post_id, "_{$this->postTypeKey}_image_ids",
 					sanitize_text_field( $_POST["_{$this->postTypeKey}_image_ids"] ) );
 			}
-			if ( ! empty( $_POST[$this->postTypeKey] ) ) {
-				foreach ( $_POST[$this->postTypeKey] as $k => $v ) {
+			if ( ! empty( $_POST[ $this->postTypeKey ] ) ) {
+				foreach ( $_POST[ $this->postTypeKey ] as $k => $v ) {
 					update_post_meta( $post_id, $k, $v );
 				}
 			}
@@ -166,5 +167,9 @@ class MainSlider {
 			add_action( 'restrict_manage_posts', array( $this, 'removeYoastAction' ), 1 );
 			add_action( 'add_meta_boxes', array( $this, 'removeYoastMetabox' ), 100 );
 		}
+	}
+
+	function textDomain() {
+		load_theme_textdomain( 'wp-main-slider', __DIR__ );
 	}
 }

@@ -23,15 +23,13 @@ if ( $autoplay > 0 ) {
 
 if ( $pagination == 'none' ) {
 	unset( $swiper_option['pagination'] );
-}
-if ( in_array( $pagination, [ 'bullets', 'fraction', 'progressbar' ] ) ) {
+} elseif ( in_array( $pagination, [ 'bullets', 'fraction', 'progressbar' ] ) ) {
 	$swiper_option['pagination'] = [
 		'el'        => '.swiper-pagination',
 		'clickable' => true,
 		'type'      => $pagination,
 	];
-}
-if ( $pagination == 'thumbnail' ) {
+} elseif ( $pagination == 'thumbnail' ) {
 	$swiper_option['loop'] = false;
 }
 

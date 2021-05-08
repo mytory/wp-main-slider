@@ -84,7 +84,7 @@ $options['is_main'] = get_post_meta(get_the_ID(), '_mytory_slider_is_main', true
                     <?php _e('Text', 'wp-main-slider') ?>
                 </label>
                 &nbsp;&nbsp;&nbsp;
-                <span class="description"><?php _e('It uses the title of attached image.', 'wp-main-slider'); ?>></span>
+                <span class="description"><?php _e('It uses the title of attached image.', 'wp-main-slider'); ?></span>
             </p>
         </td>
     </tr>

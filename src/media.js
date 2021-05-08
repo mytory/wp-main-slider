@@ -28,8 +28,8 @@ jQuery(function ($) {
         mediaFrame.open();
 
         $(document).on('mousemove', '.media-modal', e => {
-            $('.describe').attr('placeholder', '링크');
-            $('[for="attachment-details-caption"]').text('링크');
+            $('.describe').attr('placeholder', window.mytory_slider_translation.link);
+            $('[for="attachment-details-caption"]').text(window.mytory_slider_translation.link);
         });
     });
 

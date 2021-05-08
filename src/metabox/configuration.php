@@ -4,7 +4,6 @@ $options = array();
 $options['autoplay'] = get_post_meta($post->ID, '_mytory_slider_autoplay', true) ?: '0';
 $options['pagination'] = get_post_meta($post->ID, '_mytory_slider_pagination', true) ?: 'bullets';
 $options['is_main'] = get_post_meta(get_the_ID(), '_mytory_slider_is_main', true) ?: '0';
-
 ?>
 <table class="form-table">
     <tbody>
@@ -102,3 +101,9 @@ $options['is_main'] = get_post_meta(get_the_ID(), '_mytory_slider_is_main', true
     <?php } ?>
     </tbody>
 </table>
+
+<script>
+    window.mytory_slider_translation = {
+        'link' => '<?php _e('Link', 'wp-main-slider'); ?>'
+    }
+</script>

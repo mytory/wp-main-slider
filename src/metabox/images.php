@@ -1,6 +1,11 @@
 <?php
 $image_ids = get_post_meta( get_the_ID(), "_{$this->postTypeKey}_image_ids", true );
 ?>
+<style>
+    .collection-settings {
+        display: none;
+    }
+</style>
 <p>
     <span class="js-ing">로딩중...</span>
     <button disabled type="button" class="button js-open-media  js-select-photo  hidden">사진 선택</button>

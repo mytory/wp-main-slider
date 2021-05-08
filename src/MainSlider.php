@@ -32,7 +32,7 @@ class MainSlider {
 		}
 	}
 
-	function registerPostType() {
+	public function registerPostType() {
 		$labels = array(
 			'name'               => _x( 'Sliders', 'post type general name', 'wp-main-slider' ),
 			'singular_name'      => _x( 'Slider', 'post type singular name', 'wp-main-slider' ),
@@ -62,14 +62,14 @@ class MainSlider {
 		register_post_type( $this->postTypeKey, $args );
 	}
 
-	function adminEnqueueScripts() {
+	public function adminEnqueueScripts() {
 		wp_enqueue_media();
 		$src = get_theme_file_uri( str_replace( get_template_directory(), '',
 			realpath( __DIR__ . '/../dist/media.js' ) ) );
 		wp_enqueue_script( 'wp-main-slider-media', $src, array( 'jquery' ), $this->version, true );
 	}
 
-	function enqueueScripts() {
+	public function enqueueScripts() {
 		if ( $this->importSwiperJs ) {
 			$src = get_theme_file_uri( str_replace( get_template_directory(), '',
 				realpath( __DIR__ . '/../dist/swiper.js' ) ) );
@@ -77,7 +77,7 @@ class MainSlider {
 		}
 	}
 
-	function addMetaBox() {
+	public function addMetaBox() {
 		add_meta_box(
 			'wp-main-slider-images',
 			__( 'Images', 'wp-main-slider' ),
@@ -99,7 +99,8 @@ class MainSlider {
 	}
 
 
-	function save( $post_id, $post, $is_update ) {
+	/** @noinspection PhpUnusedParameterInspection */
+	public function save( $post_id, $post, $is_update ) {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
 		}
@@ -117,11 +118,13 @@ class MainSlider {
 		}
 	}
 
-	function shortcode( $attributes ) {
+	public function shortcode( $attributes ) {
 		$attributes = shortcode_atts( array(
 			'id' => '',
 		), $attributes );
 
+		/** @var array $image_ids */
+		/** @noinspection PhpUnusedLocalVariableInspection */
 		$image_ids = get_post_meta( $attributes['id'], "_{$this->postTypeKey}_image_ids", true );
 		ob_start();
 		include 'templates/basic-slider.php';
@@ -131,11 +134,11 @@ class MainSlider {
 		return $html;
 	}
 
-	function removeYoastMetabox() {
+	public function removeYoastMetabox() {
 		remove_meta_box( 'wpseo_meta', $this->postTypeKey, 'normal' );
 	}
 
-	function removeYoastCustomColumns( $columns ) {
+	public function removeYoastCustomColumns( $columns ) {
 		$yoast_columns = array(
 			'wpseo-score',
 			'wpseo-score-readability',
@@ -150,7 +153,7 @@ class MainSlider {
 		return $columns;
 	}
 
-	function removeYoastAction() {
+	public function removeYoastAction() {
 		include 'include/wp-filters-extras.php';
 		remove_filters_for_anonymous_class( 'restrict_manage_posts', 'WPSEO_Meta_Columns', 'posts_filter_dropdown',
 			10 );
@@ -160,7 +163,7 @@ class MainSlider {
 	 * Useless Yoast Plugin.
 	 * Do action after current screen is set.
 	 */
-	function removeUselessYoast() {
+	public function removeUselessYoast() {
 		$current_screen = get_current_screen();
 		if ( $current_screen->post_type == $this->postTypeKey ) {
 			add_filter( "manage_{$this->postTypeKey}_posts_columns", array( $this, 'removeYoastCustomColumns' ), 100 );
@@ -169,7 +172,9 @@ class MainSlider {
 		}
 	}
 
-	function textDomain() {
+	public function textDomain() {
 		load_theme_textdomain( 'wp-main-slider', __DIR__ );
 	}
+
+
 }

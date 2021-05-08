@@ -78,7 +78,7 @@ $image_id_array = explode( ',', $image_ids );
 
 <script>
     jQuery(document).ready(function ($) {
-        window.swiperMain = new Swiper('.js-<?php echo $this->postTypeKey ?>', <?php echo json_encode( $swiper_option ) ?>);
+        window['<?= $this->postTypeKey ?>_swiper'] = new Swiper('.js-<?php echo $this->postTypeKey ?>', <?php echo json_encode( $swiper_option ) ?>);
 		<?php
 		if ( $pagination == 'thumbnail' ) {
 			require 'thumbnail.js'; // 뚝딱...

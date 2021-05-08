@@ -4,24 +4,32 @@
  */
 ?>
 <style>
-    .wp-main-slider-buttons {
+    .mytory-slider-buttons {
         text-align: center;
-        padding-top: .5em;
+        position: absolute;
+        bottom: .5rem;
+        width: 100%;
+        z-index: 2;
     }
-    .wp-main-slider-button {
-        background-color: white;
+    .mytory-slider-button {
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 5px .5em;
+        border: none;
+        -webkit-appearance: none;
         color: black;
-        border: 1px solid #ddd;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 0.9rem;
     }
-    .wp-main-slider-button--active {
-        background-color: #ccc;
+    .mytory-slider-button--active {
+        background-color: rgba(0, 0, 0, 0.7);
         color: white;
     }
 </style>
-<div class="js-wp-main-slider-buttons  wp-main-slider-buttons">
+<div class="js-mytory-slider-buttons  mytory-slider-buttons">
     <?php foreach ($image_id_array as $i => $image_id) { ?>
         <?php $image = get_post($image_id); ?>
-        <button class="wp-main-slider-button <?php echo (($i === 0) ? 'wp-main-slider-button--active' : '') ?>">
+        <button class="mytory-slider-button <?php echo (($i === 0) ? 'mytory-slider-button--active' : '') ?>">
             <?php echo $image->post_title ?>
         </button>
     <?php } ?>

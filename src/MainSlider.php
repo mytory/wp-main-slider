@@ -120,7 +120,20 @@ class MainSlider {
 			if ( ! empty( $_POST[ $this->postTypeKey ] ) ) {
 				foreach ( $_POST[ $this->postTypeKey ] as $k => $v ) {
 					if ( $k === '_mytory_slider_is_main' and $v == '1' ) {
-						delete_post_meta_by_key( '_mytory_slider_is_main' );
+						$the_query = new \WP_Query([
+							'post_type' => $this->postTypeKey,
+							'posts_per_page' => -1,
+							'meta_query' => [
+								[
+									'key' => '_mytory_slider_is_main',
+									'value' => '1',
+									'compare' => '=',
+								]
+							]
+						]);
+						foreach ( $the_query->posts as $post ) {
+							delete_post_meta($post->ID, '_mytory_slider_is_main');
+						}
 					}
 					update_post_meta( $post_id, $k, $v );
 				}

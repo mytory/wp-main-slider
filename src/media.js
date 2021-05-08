@@ -27,13 +27,10 @@ jQuery(function ($) {
         }
         mediaFrame.open();
 
-        setTimeout(function () {
-            document.querySelector('.media-button-insert').addEventListener('click', function () {
-                setTimeout(function () {
-                    $('.describe').attr('placeholder', 'Link');
-                }, 100);
-            });
-        }, 100);
+        $(document).on('mousemove', '.media-modal', e => {
+            $('.describe').attr('placeholder', '링크');
+            $('[for="attachment-details-caption"]').text('링크');
+        });
     });
 
     function getOptions() {
@@ -60,8 +57,6 @@ jQuery(function ($) {
             if ($.trim($('#image_ids').val())) {
                 mediaFrame.setState('gallery-edit');
             }
-            // post_excerpt 를 링크 거는 데 사용. 꼼수.
-            $('.describe').attr('placeholder', 'Link');
         });
 
         // 이미지 선택시 실행할 동작

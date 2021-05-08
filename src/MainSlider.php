@@ -24,6 +24,8 @@ class MainSlider {
 		add_shortcode( $this->postTypeKey, array( $this, 'shortcode' ) );
 		add_action( 'save_post', array( $this, 'save' ), 10, 3 );
 		add_action( 'after_setup_theme', [ $this, 'textDomain' ] );
+		add_filter( "manage_{$this->postTypeKey}_posts_columns", [ $this, 'postColumns' ] );
+		add_action( "manage_{$this->postTypeKey}_posts_custom_column", [ $this, 'postCustomColumn' ], 10, 2 );
 
 		if ( is_admin() ) {
 			add_action( 'add_meta_boxes', array( $this, 'addMetaBox' ) );
@@ -64,9 +66,14 @@ class MainSlider {
 
 	public function adminEnqueueScripts() {
 		wp_enqueue_media();
+
 		$src = get_theme_file_uri( str_replace( get_template_directory(), '',
 			realpath( __DIR__ . '/../dist/media.js' ) ) );
 		wp_enqueue_script( 'wp-main-slider-media', $src, array( 'jquery' ), $this->version, true );
+
+		$style_src = get_theme_file_uri( str_replace( get_template_directory(), '',
+			realpath( __DIR__ . '/../src/mytory-slider.css' ) ) );
+		wp_enqueue_style('wp-main-slider', $style_src, [], $this->version);
 	}
 
 	public function enqueueScripts() {
@@ -112,6 +119,9 @@ class MainSlider {
 			}
 			if ( ! empty( $_POST[ $this->postTypeKey ] ) ) {
 				foreach ( $_POST[ $this->postTypeKey ] as $k => $v ) {
+					if ( $k === '_mytory_slider_is_main' and $v == '1' ) {
+						delete_post_meta_by_key( '_mytory_slider_is_main' );
+					}
 					update_post_meta( $post_id, $k, $v );
 				}
 			}
@@ -176,5 +186,17 @@ class MainSlider {
 		load_theme_textdomain( 'wp-main-slider', __DIR__ );
 	}
 
+	public function postColumns( $columns ): array {
+		$columns['is_main'] = __( 'Whether the main', 'wp-main-slider' );
 
+		return $columns;
+	}
+
+	public function postCustomColumn( $column_name, $post_id ) {
+		switch ( $column_name ) {
+			case 'is_main':
+				$is_main = get_post_meta( $post_id, '_mytory_slider_is_main', true );
+				echo $is_main ? '○' : '<span style="color: #ccc">×</span>';
+		}
+	}
 }

@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress - 5.7.x - Development\n"
-"POT-Creation-Date: 2021-05-08 15:28+0900\n"
-"PO-Revision-Date: 2021-05-08 15:28+0900\n"
+"POT-Creation-Date: 2021-05-08 16:01+0900\n"
+"PO-Revision-Date: 2021-05-08 16:01+0900\n"
 "Last-Translator: 안형우 <mytory@gmail.com>\n"
 "Language-Team: \n"
 "Language: ko_KR\n"
@@ -17,65 +17,69 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_x;_e\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: MainSlider.php:38
+#: MainSlider.php:39
 msgid "Sliders"
 msgstr "슬라이더 목록"
 
-#: MainSlider.php:39 MainSlider.php:41
+#: MainSlider.php:40 MainSlider.php:42
 msgid "Slider"
 msgstr "슬라이더"
 
-#: MainSlider.php:42
+#: MainSlider.php:43
 msgid "Add New"
 msgstr "새 슬라이더"
 
-#: MainSlider.php:43
+#: MainSlider.php:44
 msgid "Add New Slider"
 msgstr "새 슬라이더"
 
-#: MainSlider.php:44
+#: MainSlider.php:45
 msgid "New Slider"
 msgstr "새 슬라이더"
 
-#: MainSlider.php:45
+#: MainSlider.php:46
 msgid "Edit Slider"
 msgstr "슬라이더 편집"
 
-#: MainSlider.php:46
+#: MainSlider.php:47
 msgid "View Slider"
 msgstr "슬라이더 보기"
 
-#: MainSlider.php:47
+#: MainSlider.php:48
 msgid "All Sliders"
 msgstr "전체 슬라이더"
 
-#: MainSlider.php:48
+#: MainSlider.php:49
 msgid "Search Sliders"
 msgstr "슬라이더 검색"
 
-#: MainSlider.php:49
+#: MainSlider.php:50
 msgid "Parent Sliders:"
 msgstr "부모 슬라이더:"
 
-#: MainSlider.php:50
+#: MainSlider.php:51
 msgid "No Sliders found."
 msgstr "슬라이더가 없습니다."
 
-#: MainSlider.php:51
+#: MainSlider.php:52
 msgid "No Sliders found in Trash."
 msgstr "휴지통이 비었습니다."
 
-#: MainSlider.php:84
+#: MainSlider.php:90
 msgid "Images"
 msgstr "이미지"
 
-#: MainSlider.php:93
+#: MainSlider.php:99
 msgid "Configuration"
 msgstr "설정"
 
-#: MainSlider.php:184
+#: MainSlider.php:190
 msgid "Whether the main"
 msgstr "메인 여부"
+
+#: MainSlider.php:223
+msgid "Please set the Main Slider."
+msgstr "메인 슬라이더를 설정해 주세요."
 
 #: metabox/configuration.php:12
 msgid "Auto play(milli seconds)"
@@ -136,3 +140,8 @@ msgstr "숏코드"
 #: metabox/configuration.php:107
 msgid "Link"
 msgstr "링크"
+
+#, fuzzy
+#~| msgid "Set to Main Slider"
+#~ msgid "Set Main Slider."
+#~ msgstr "메인으로 설정"

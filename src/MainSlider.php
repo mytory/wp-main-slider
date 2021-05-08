@@ -199,4 +199,27 @@ class MainSlider {
 				echo $is_main ? '○' : '<span style="color: #ccc">×</span>';
 		}
 	}
+
+	public function getMainSliderId() {
+		$the_query = new \WP_Query([
+			'post_type' => $this->postTypeKey,
+			'posts_per_page' => 1,
+			'meta_query' => [
+				'key' => '_mytory_slider_is_main',
+				'value' => '1',
+			]
+		]);
+		if ($the_query->post_count) {
+			return $the_query->posts[0]->ID;
+		}
+		return null;
+	}
+
+	public function getMainSliderCode(): string {
+		$id = $this->getMainSliderId();
+		if ($id) {
+			return do_shortcode("[$this->postTypeKey id=$id]");
+		}
+		return __('Please set the Main Slider.', 'wp-main-slider');
+	}
 }

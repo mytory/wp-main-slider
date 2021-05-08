@@ -4,7 +4,7 @@
  * @var array $image_ids
  */
 
-$pagination = get_post_meta( $attributes['id'], '_pagination', true );
+$pagination = get_post_meta( $attributes['id'], '_mytory_slider_pagination', true );
 
 $swiper_option = array(
 	'loop'       => true,
@@ -14,7 +14,7 @@ $swiper_option = array(
 	],
 );
 
-$autoplay = get_post_meta( $attributes['id'], '_autoplay', true );
+$autoplay = get_post_meta( $attributes['id'], '_mytory_slider_autoplay', true );
 if ( $autoplay > 0 ) {
 	$swiper_option['autoplay'] = [
 		'deplay' => $autoplay

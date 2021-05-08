@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress - 5.7.x - Development\n"
-"POT-Creation-Date: 2021-05-07 01:12+0900\n"
-"PO-Revision-Date: 2021-05-07 01:13+0900\n"
+"POT-Creation-Date: 2021-05-08 15:08+0900\n"
+"PO-Revision-Date: 2021-05-08 15:08+0900\n"
 "Last-Translator: 안형우 <mytory@gmail.com>\n"
 "Language-Team: \n"
 "Language: ko_KR\n"
@@ -73,42 +73,54 @@ msgstr "이미지"
 msgid "Configuration"
 msgstr "설정"
 
-#: metabox/configuration.php:20
-msgid "Shortcode"
-msgstr "숏코드"
-
-#: metabox/configuration.php:29
+#: metabox/configuration.php:13
 msgid "Auto play(milli seconds)"
 msgstr "자동 재생(밀리초)"
 
-#: metabox/configuration.php:35
+#: metabox/configuration.php:19
 msgid "Set 0 to disable autoplay."
 msgstr "0으로 설정하면 자동재생을 하지 않습니다."
 
-#: metabox/configuration.php:40
+#: metabox/configuration.php:24
+msgid "Set to Main Slider"
+msgstr "메인으로 설정"
+
+#: metabox/configuration.php:31
+msgid "Yes"
+msgstr "예"
+
+#: metabox/configuration.php:36
+msgid "No"
+msgstr "아니오"
+
+#: metabox/configuration.php:43
 msgid "Pagination"
 msgstr "페이지네이션"
 
-#: metabox/configuration.php:47
+#: metabox/configuration.php:50
 msgid "bullets"
 msgstr "동그라미"
 
-#: metabox/configuration.php:54
+#: metabox/configuration.php:57
 msgid "fraction"
 msgstr "숫자"
 
-#: metabox/configuration.php:61
+#: metabox/configuration.php:64
 msgid "progressbar"
 msgstr "진행바"
 
-#: metabox/configuration.php:68
+#: metabox/configuration.php:71
 msgid "None"
 msgstr "없음"
 
-#: metabox/configuration.php:75
+#: metabox/configuration.php:78
 msgid "Thumbnail"
 msgstr "썸네일"
 
-#: metabox/configuration.php:82
+#: metabox/configuration.php:85
 msgid "Text"
 msgstr "텍스트"
+
+#: metabox/configuration.php:96
+msgid "Shortcode"
+msgstr "숏코드"

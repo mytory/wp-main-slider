@@ -1,29 +1,13 @@
 <?php
 global $post;
 $options = array();
-$options['autoplay'] = get_post_meta($post->ID, '_autoplay', true);
-if (!$options['autoplay']) {
-    $options['autoplay'] = 0;
-}
-$options['pagination'] = get_post_meta($post->ID, '_pagination', true);
-if (!$options['pagination']) {
-    $options['pagination'] = 'bullets';
-}
+$options['autoplay'] = get_post_meta($post->ID, '_autoplay', true) ?: '0';
+$options['pagination'] = get_post_meta($post->ID, '_pagination', true) ?: 'bullets';
+$options['is_main'] = get_post_meta(get_the_ID(), '_mytory_slider_is_main', true) ?: '0';
 
 ?>
 <table class="form-table">
     <tbody>
-    <?php
-    if ($post->ID) { ?>
-    <tr>
-        <th scope="row">
-            <?php _e('Shortcode', 'wp-main-slider') ?>
-        </th>
-        <td>
-            <input type="text" class="regular-text  js-shortcode" readonly value="[<?php echo $this->postTypeKey; ?> id=<?php echo $post->ID ?>]" title="shortcode">
-        </td>
-    </tr>
-    <?php } ?>
     <tr>
         <th scope="row">
             <?php _e('Auto play(milli seconds)', 'wp-main-slider') ?>
@@ -33,6 +17,25 @@ if (!$options['pagination']) {
                    name="<?php echo $this->postTypeKey; ?>[_autoplay]"
                    value="<?php echo $options['autoplay'] ?>">
             <p class="help"><?php _e('Set 0 to disable autoplay.', 'wp-main-slider') ?></p>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row">
+	        <?php _e('Set to Main Slider', 'wp-main-slider') ?>
+        </th>
+        <td>
+            <p>
+                <label style="margin-right: 1em;">
+                    <input type="radio" name="<?php echo $this->postTypeKey; ?>[_mytory_slider_is_main]" value="1"
+			            <?php attr_checked('1', $options['is_main'], false) ?>>
+		            <?php _e('Yes', 'wp-main-slider') ?>
+                </label>
+                <label>
+                    <input type="radio" name="<?php echo $this->postTypeKey; ?>[_mytory_slider_is_main]" value="0"
+			            <?php attr_checked('0', $options['is_main'], true) ?>>
+		            <?php _e('No', 'wp-main-slider') ?>
+                </label>
+            </p>
         </td>
     </tr>
     <tr>
@@ -86,5 +89,16 @@ if (!$options['pagination']) {
             </p>
         </td>
     </tr>
+    <?php
+    if ($post->ID) { ?>
+        <tr>
+            <th scope="row">
+			    <?php _e('Shortcode', 'wp-main-slider') ?>
+            </th>
+            <td>
+                <input type="text" class="regular-text  js-shortcode" readonly value="[<?php echo $this->postTypeKey; ?> id=<?php echo $post->ID ?>]" title="shortcode">
+            </td>
+        </tr>
+    <?php } ?>
     </tbody>
 </table>

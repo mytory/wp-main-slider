@@ -205,8 +205,11 @@ class MainSlider {
 			'post_type' => $this->postTypeKey,
 			'posts_per_page' => 1,
 			'meta_query' => [
-				'key' => '_mytory_slider_is_main',
-				'value' => '1',
+				[
+					'key' => '_mytory_slider_is_main',
+					'value' => '1',
+					'compare' => '=',
+				]
 			]
 		]);
 		if ($the_query->post_count) {

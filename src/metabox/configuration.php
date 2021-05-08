@@ -85,7 +85,7 @@ $options['is_main'] = get_post_meta(get_the_ID(), '_mytory_slider_is_main', true
                     <?php _e('Text', 'wp-main-slider') ?>
                 </label>
                 &nbsp;&nbsp;&nbsp;
-                <span class="description">텍스트 내비게이션은 사진의 '제목' 값을 사용합니다. '사진변경'에서 개별 사진을 선택하신 뒤, 우측 하단에 있는 제목을 수정하시면 됩니다.</span>
+                <span class="description"><?php _e('It uses the title of attached image.', 'wp-main-slider'); ?>></span>
             </p>
         </td>
     </tr>

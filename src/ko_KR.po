@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WordPress - 5.7.x - Development\n"
-"POT-Creation-Date: 2021-05-08 15:08+0900\n"
-"PO-Revision-Date: 2021-05-08 15:08+0900\n"
+"POT-Creation-Date: 2021-05-08 15:12+0900\n"
+"PO-Revision-Date: 2021-05-08 15:13+0900\n"
 "Last-Translator: 안형우 <mytory@gmail.com>\n"
 "Language-Team: \n"
 "Language: ko_KR\n"
@@ -120,6 +120,10 @@ msgstr "썸네일"
 #: metabox/configuration.php:85
 msgid "Text"
 msgstr "텍스트"
+
+#: metabox/configuration.php:88
+msgid "It uses the title of attached image."
+msgstr "첨부 이미지의 제목을 사용합니다."
 
 #: metabox/configuration.php:96
 msgid "Shortcode"

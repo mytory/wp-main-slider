@@ -104,6 +104,6 @@ $options['is_main'] = get_post_meta(get_the_ID(), '_mytory_slider_is_main', true
 
 <script>
     window.mytory_slider_translation = {
-        'link' => '<?php _e('Link', 'wp-main-slider'); ?>'
+        'link': '<?php _e('Link', 'wp-main-slider'); ?>'
     }
 </script>
